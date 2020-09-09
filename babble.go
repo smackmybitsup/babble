@@ -14,11 +14,12 @@ type Babbler struct {
 	Count     int
 	Separator string
 	Words     []string
+	Wordfield int
 }
 
 func NewBabbler() (b Babbler) {
 	b.Count = 2
-	b.wordfield = 10
+	b.Wordfield = 10
 	b.Separator = "-"
 	b.Words = readAvailableDictionary()
 	return
