@@ -11,13 +11,14 @@ func init() {
 }
 
 type Babbler struct {
-	Count int
+	Count     int
 	Separator string
-	Words []string
+	Words     []string
 }
 
 func NewBabbler() (b Babbler) {
 	b.Count = 2
+	b.wordfield = 10
 	b.Separator = "-"
 	b.Words = readAvailableDictionary()
 	return
@@ -25,7 +26,11 @@ func NewBabbler() (b Babbler) {
 
 func (this Babbler) Babble() string {
 	pieces := []string{}
-	for i := 0; i < this.Count ; i++ {
+
+	for i := 0; i < this.Count; i++ {
+		if len(pieces) > 5 {
+			break
+		}
 		pieces = append(pieces, this.Words[rand.Int()%len(this.Words)])
 	}
 
